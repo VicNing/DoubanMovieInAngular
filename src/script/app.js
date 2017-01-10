@@ -1,15 +1,17 @@
 require('../css/main.scss');
 const angular = require('angular');
 const ngRoute = require('angular-route');
+require('./utils');
 require('../route/in_theaters/controller');
 require('../route/comming_soon/controller');
 require('../route/top_250/controller');
+require('../route/movielist');
 
 
-angular.module('app', ['ngRoute', 'moviecat.in_theaters', 'moviecat.comming_soon', 'moviecat.top_250'])
+angular.module('app', ['ngRoute', 'moviecat.movie_list'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise(
-            { redirectTo: '/in_theaters' }
+            { redirectTo: '/in_theaters/1' }
         );
     }])
     .config(['$locationProvider', function ($locationProvider) {

@@ -16,8 +16,26 @@
                     </span>
                 </p>
                 <p>类型：{{subject.genres.join('、')}}</p>
-                {{subject.original_title}}
             </div>
         </div>
     </a>
+    <div class="spinner" ng-show="loading"></div>
+    <nav aria-label="Page navigation" ng-show="!loading">
+        <ul class="pagination">
+            <!--<li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>-->
+            <!--<li class="active"><a href="#" >1</a></li>-->
+            <li ng-repeat="i in pages track by $index" ng-class="{active:current==i}">
+                <a ng-href="{{'#/in_theaters/'+i}}">{{i}}</a>
+            </li>
+            <!--<li>
+                <a ng-href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>-->
+        </ul>
+    </nav>
 </div>

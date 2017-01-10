@@ -1,12 +1,12 @@
-module.exports = angular.module('moviecat.in_theaters', ['ngRoute', 'moviecat.utils'])
+module.exports = angular.module('moviecat.movie_list', ['ngRoute', 'moviecat.utils'])
     .config(['$routeProvider',
         function ($routeProvider) {
-            $routeProvider.when('/in_theaters/:page', {
-                templateUrl: './src/route/in_theaters/view.html',
-                constroller: 'InTheatersController'
+            $routeProvider.when('/:category/:page', {
+                templateUrl: './src/route/view.html',
+                constroller: 'MovieListController'
             });
         }])
-    .controller('InTheatersController', ['$scope', 'utils', '$routeParams',
+    .controller('MovieListController', ['$scope', 'utils', '$routeParams',
         function ($scope, utils, $routeParams) {
             $scope.loading = true;
             $scope.current = parseInt($routeParams.page);
@@ -14,7 +14,7 @@ module.exports = angular.module('moviecat.in_theaters', ['ngRoute', 'moviecat.ut
             $scope.pages = null;
             let count = 5;
             let start = ($scope.current - 1) * count;
-            let url = `http://api.douban.com/v2/movie/in_theaters?count=${count}&start=${start}`;
+            let url = `http://api.douban.com/v2/movie/${$routeParams.category}?count=${count}&start=${start}`;
             if (!$scope.data) {
                 utils.getJsonp(url, 'callback',
                     function (data) {
