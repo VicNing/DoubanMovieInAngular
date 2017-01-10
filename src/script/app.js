@@ -11,6 +11,10 @@ angular.module('app', ['ngRoute', 'moviecat.in_theaters', 'moviecat.comming_soon
         $routeProvider.otherwise(
             { redirectTo: '/in_theaters' }
         );
-    }]).controller('AppController', ['$scope', function ($scope) {
+    }])
+    .config(['$locationProvider', function ($locationProvider) {
+        $locationProvider.hashPrefix('');
+    }])
+    .controller('AppController', ['$scope', function ($scope) {
         console.log('haha');
     }]);
