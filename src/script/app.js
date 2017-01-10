@@ -2,9 +2,6 @@ require('../css/main.scss');
 const angular = require('angular');
 const ngRoute = require('angular-route');
 require('./utils');
-require('../route/in_theaters/controller');
-require('../route/comming_soon/controller');
-require('../route/top_250/controller');
 require('../route/movielist');
 
 
